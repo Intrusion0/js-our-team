@@ -18,6 +18,7 @@ Ogni membro dovrà avere le informazioni necessarie per stampare la relativa car
 
 let contTeams = document.querySelector('.team-container');
 let cardMember = "";
+let addMember = document.getElementById("addMemberButton");
 
 const membersTeam = [
     {
@@ -71,3 +72,37 @@ for (let key in membersTeam) {
 
     console.log(key, membersTeam[key]);
 }
+
+addMember.addEventListener("click", function() {
+    let addName = document.getElementById("name").value;
+    let addRole = document.getElementById("role").value;
+    let addImage = document.getElementById("image").value;
+
+    cardMember += `
+    <div class="team-card">
+    <div class="card-image">
+      <img
+        src="${addImage}" alt="${addName}"/>
+    </div>
+    <div class="card-text">
+      <h3>${addName}</h3>
+      <p>${addRole}</p>
+    </div>
+    </div>`
+
+    contTeams.innerHTML = cardMember;
+
+    let newMemberTeams = {
+        'name': addName,
+        'role': addRole,
+        'photo': addImage
+    };
+
+    membersTeam.push(newMemberTeams);
+
+    console.log(addName);
+    console.log(addRole);
+    console.log(addImage);
+
+    console.log(membersTeam);
+});

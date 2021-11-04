@@ -7,17 +7,17 @@ Ogni membro dovrà avere le informazioni necessarie per stampare la relativa car
 
 /*
 
-1. Creo un array di oggetti in cui inserirò i vari membri con le loro informazioni => const membersTeam = [{}];
-    1.2 Aggiungerò le varie informazioni (nome - ruolo - foto) negli objects => {'name': 'tizio', 'role': 'x', 'photo': 'img/.x'};
-2. Stampo le card in HTML => .append    
+--DONE  1. Creo un array di oggetti in cui inserirò i vari membri con le loro informazioni => const membersTeam = [{}];
+    --DONE  1.2 Aggiungerò le varie informazioni (nome - ruolo - foto) negli objects => {'name': 'tizio', 'role': 'x', 'photo': 'img/.x'};
+--DONE  2. Creo un ciclo for in per controllare l'array di oggetti => for (let key in membersTeam);
+    --DONE  2.1 Creo una variabile in cui conterrà il contenuto che dovrà stampare in html => let cardMember = "";
+    --DONE  2.2 Copio il contenuto del container nell'Html e lo inserisco nel template literal presente nella variabile vuota creata precedentemente => cardMember += `contenuto-copiato`;
+    --DONE  2.3 Sostituisco il nome, immagine e ruolo con le informazione dei vari object contenuti nell'array. => ${membersTeam[key].name} ecc..
+    --DONE  2.4 Inserisco nell'html tramite la variabile che fa riferimento al container il contenuto della varibile che conterrà le varie card => contTeams.innerHTML = cardMember;
 */
 
-let contCardImgTeam = document.querySelector('.card-image');
-let contCardTextTeam = document.querySelector('.card-text');
-let contMembersTeam = document.querySelector('.team-card');
 let contTeams = document.querySelector('.team-container');
 let cardMember = "";
-let cardTextMember = "";
 
 const membersTeam = [
     {
@@ -53,6 +53,7 @@ const membersTeam = [
 ];
 
 console.log(membersTeam);
+
 for (let key in membersTeam) {
     cardMember += `
     <div class="team-card">
@@ -67,6 +68,6 @@ for (let key in membersTeam) {
   </div>`
 
     contTeams.innerHTML = cardMember;
-    
+
     console.log(key, membersTeam[key]);
 }

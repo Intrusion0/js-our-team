@@ -54,23 +54,19 @@ const membersTeam = [
 
 console.log(membersTeam);
 for (let key in membersTeam) {
-    cardMember += `<img src="${membersTeam[key].photo}" alt="${membersTeam[key].name}"/>`
-    cardTextMember += `
-    <h3>${membersTeam[key].name}</h3> 
-    <p>${membersTeam[key].role}</p>`
+    cardMember += `
+    <div class="team-card">
+    <div class="card-image">
+      <img
+        src="${membersTeam[key].photo}" alt="${membersTeam[key].name}"/>
+    </div>
+    <div class="card-text">
+      <h3>${membersTeam[key].name}</h3>
+      <p>${membersTeam[key].role}</p>
+    </div>
+  </div>`
 
-    let provauno = contCardImgTeam.append = cardMember;
-    let provadue = contCardTextTeam.append = cardTextMember;
-    let provatre = contMembersTeam.append = provauno + provadue;
-    contTeams.append = provatre;
-
-    console.log(provauno);
-    console.log(provadue);
-    console.log(provatre);
-
-    console.log(contCardImgTeam, contCardTextTeam);
+    contTeams.innerHTML = cardMember;
+    
     console.log(key, membersTeam[key]);
-    console.log(membersTeam[key].photo);
-    console.log(membersTeam[key].name);
-    console.log(membersTeam[key].role);
 }

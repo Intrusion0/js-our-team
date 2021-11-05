@@ -56,19 +56,9 @@ const membersTeam = [
 console.log(membersTeam);
 
 for (let key in membersTeam) {
-    cardMember += `
-    <div class="team-card">
-    <div class="card-image">
-      <img
-        src="${membersTeam[key].photo}" alt="${membersTeam[key].name}"/>
-    </div>
-    <div class="card-text">
-      <h3>${membersTeam[key].name}</h3>
-      <p>${membersTeam[key].role}</p>
-    </div>
-  </div>`
+  let newMember = addNewMembers(membersTeam[key].photo, membersTeam[key].name, membersTeam[key].role);
 
-    contTeams.innerHTML = cardMember;
+    contTeams.innerHTML = newMember;
 
     console.log(key, membersTeam[key]);
 }
@@ -78,19 +68,9 @@ addMember.addEventListener("click", function() {
     let addRole = document.getElementById("role").value;
     let addImage = document.getElementById("image").value;
 
-    cardMember += `
-    <div class="team-card">
-    <div class="card-image">
-      <img
-        src="${addImage}" alt="${addName}"/>
-    </div>
-    <div class="card-text">
-      <h3>${addName}</h3>
-      <p>${addRole}</p>
-    </div>
-    </div>`
+    let newMember = addNewMembers(addImage, addName, addRole);
 
-    contTeams.innerHTML = cardMember;
+    contTeams.innerHTML = newMember;
 
     let newMemberTeams = {
         'name': addName,
@@ -106,3 +86,22 @@ addMember.addEventListener("click", function() {
 
     console.log(membersTeam);
 });
+
+// Funzioni
+
+// Aggiunta nuovo membro
+function addNewMembers(addPhoto, addName, addRole) {
+    cardMember += `
+      <div class="team-card">
+      <div class="card-image">
+        <img
+          src="${addPhoto}" alt="${addName}"/>
+      </div>
+      <div class="card-text">
+        <h3>${addName}</h3>
+        <p>${addRole}</p>
+      </div>
+    </div>`
+
+    return cardMember;
+}
